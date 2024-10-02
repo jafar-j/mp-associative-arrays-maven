@@ -1,7 +1,17 @@
-Associative Arrays
-==================
+# mp-associative-arrays-maven
 
-Starter code for a CSC-207 project on associative arrays.
+- Building associative arrays in Java and applying basic procedures on them.
+- Practicing writing tests alongside peers and applying them to own code.
 
-_Students must replace the contents of this file with appropriate
-contents, including class, author, date, and URL._
+**Authors**
+
+* Samuel A. Rebelsky (starter code).
+*Jafar Jarrar
+
+**Date** 
+
+Tuesday, October 1st, 2024
+
+**URL**
+
+https://github.com/jafar-j/mp-associative-arrays-maven.git
