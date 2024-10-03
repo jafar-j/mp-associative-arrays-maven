@@ -19,6 +19,7 @@ import org.junit.jupiter.api.Test;
  * @author Your Name Here
  */
 public class TestsFromStudent {
+  
   /**
    * A simple test.
    */
