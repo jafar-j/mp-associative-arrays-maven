@@ -145,8 +145,12 @@ public class AssociativeArray<K, V> {
    *   when the key is null or does not appear in the associative array.
    */
   public V get(K key) throws KeyNotFoundException {
-    int index = find(key);
-    return this.pairs[index].val;
+    try {
+      int index = find(key);
+      return this.pairs[index].val;
+    } catch (KeyNotFoundException e) {
+      throw new KeyNotFoundException("Key not found.");
+    }
   } // get(K)
 
   /**
@@ -230,7 +234,7 @@ public class AssociativeArray<K, V> {
         throw new KeyNotFoundException();
       } else if (this.pairs[i].key == null) {
         throw new KeyNotFoundException();
-      }else if (this.pairs[i].key.equals(keyToFind)) {
+      } else if (this.pairs[i].key.equals(keyToFind)) {
         index = i;
         break;
       } // if
