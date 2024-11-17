@@ -11,7 +11,7 @@ import static java.lang.reflect.Array.newInstance;
  * @param <V> the value type
  *
  * @author Your Name Here
- * @author Samuel A. Rebelsky
+ * @author Jafar Jarrar
  */
 public class AssociativeArray<K, V> {
   // +-----------+---------------------------------------------------
@@ -122,7 +122,7 @@ public class AssociativeArray<K, V> {
       this.pairs[size] = new KVPair<K, V>(key, value);
       this.size++;
       return;
-    }// if
+    } // if
     try {
       int index = find(key);
       this.pairs[index] = new KVPair<K, V>(key, value);
@@ -150,7 +150,7 @@ public class AssociativeArray<K, V> {
       return this.pairs[index].val;
     } catch (KeyNotFoundException e) {
       throw new KeyNotFoundException("Key not found.");
-    }
+    } // try/catch
   } // get(K)
 
   /**
@@ -162,13 +162,12 @@ public class AssociativeArray<K, V> {
    *
    * @return true if the key appears and false otherwise.
    */
-  public boolean hasKey(K key){
+  public boolean hasKey(K key) {
     try {
       return (find(key) > -1);
-    } catch (KeyNotFoundException e){
+    } catch (KeyNotFoundException e) {
       return false;
-    }
-    
+    } // try/catch
   } // hasKey(K)
 
   /**
@@ -187,9 +186,9 @@ public class AssociativeArray<K, V> {
       } else {
         this.pairs[index] = new KVPair<K, V>(pairs[this.size - 1].key, pairs[this.size - 1].val);
         this.pairs[size - 1] = new KVPair<>();
-      }
+      } // if
       size--;
-    } catch (Exception e ) {
+    } catch (Exception e) {
       // Does not do anything.
     } // try/catch
   } // remove(K)
@@ -218,7 +217,7 @@ public class AssociativeArray<K, V> {
    * Find the index of the first entry in `pairs` that contains key.
    * If no such entry is found, throws an exception.
    *
-   * @param key
+   * @param keyToFind
    *   The key of the entry.
    *
    * @return
@@ -229,16 +228,20 @@ public class AssociativeArray<K, V> {
    */
   int find(K keyToFind) throws KeyNotFoundException {
     int index = 0;
+    boolean found = false;
     for (int i = 0; i < this.pairs.length; i++) {
-      if (this.pairs[i] == null) {
-        throw new KeyNotFoundException();
-      } else if (this.pairs[i].key == null) {
+      if (this.pairs[i] == null || this.pairs[i].key == null) {
         throw new KeyNotFoundException();
       } else if (this.pairs[i].key.equals(keyToFind)) {
         index = i;
+        found = true;
         break;
       } // if
     } // for
-    return index;
+    if (found) {
+      return index;
+    } else {
+      throw new KeyNotFoundException();
+    } // else
   } // find(K)
 } // class AssociativeArray

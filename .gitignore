@@ -36,3 +36,4 @@ shared
 # Strange macOS files
 .DS_Store
 
+.vscode/
